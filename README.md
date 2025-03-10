@@ -55,3 +55,26 @@ To completely disable sleep mode on your computer, run:
 ```bash
 sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target
 ```
+
+and in the end make this python code to run after each restart to do that first install dependencies with pip
+```bash
+pip install PyGObject
+```
+
+then go to this address ```/home/youruser/.config/autostart``` 
+
+and make a desktop file for it
+
+```
+[Desktop Entry]
+Type=Application
+Name=Display Switcher on Wayland
+Exec=/usr/bin/python3 /data/services/display/wayland.py
+Comment=Automatically switches display when idle
+Actions=RunInTerminal;
+
+
+[Desktop Action RunInTerminal]
+Name=Run in Terminal
+Icon=application-x-executable
+```
